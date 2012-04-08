@@ -30,3 +30,16 @@ end
 Then /^I should be told that the name is required$/ do
   page.should have_content("Name can't be blank")
 end
+
+Given /^that there is a project named "([^"]*)"$/ do |name|
+ 	FactoryGirl.create(:project,:name=>name)
+ end
+
+When /^I go to "([^"]*)" project Page$/ do |name|
+	visit('/')
+  	click_link(name)
+end
+
+Then /^I should be on the "([^"]*)" project Page$/ do |name|
+  page.should have_content(name+" - Projects - Ticketee")
+end
