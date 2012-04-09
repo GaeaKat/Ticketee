@@ -43,3 +43,20 @@ end
 Then /^I should be on the "([^"]*)" project Page$/ do |name|
   page.should have_content(name+" - Projects - Ticketee")
 end
+Given /^that I am on the page for "([^"]*)"$/ do |name|
+  visit('/')
+  click_link(name)
+end
+
+Given /^that I edit that project$/ do
+  click_link('Edit Project')
+end
+
+When /^I change the name to "([^"]*)"$/ do |name|
+  fill_in('Name',:with=>name)
+  click_button('Update Project')
+end
+
+Then /^I should see "([^"]*)"$/ do |name|
+  page.should have_content(name)
+end
