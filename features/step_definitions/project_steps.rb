@@ -60,3 +60,11 @@ end
 Then /^I should see "([^"]*)"$/ do |name|
   page.should have_content(name)
 end
+
+Given /^I delete the project$/ do
+  click_link('Delete Project')
+end
+
+Then /^I should not see "([^"]*)"$/ do |name|
+  page.should have_no_content(name)
+end
